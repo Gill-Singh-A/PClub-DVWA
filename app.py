@@ -11,6 +11,9 @@ debug = True
 
 not_allowed_files = ["app.py"]
 
+@app.route("/", methods=["GET"])
+def indexRoute():
+    return render_template("index.html")
 @app.route("/gallery", methods=["GET"])
 def galleryRoute():
     image_files = os.listdir("static/images/gallery")
