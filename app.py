@@ -4,9 +4,8 @@ import os
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
-hosted_url = "127.0.0.1"
 host = "127.0.0.1"
-port = 7000
+port = 2324
 debug = True
 
 not_allowed_files = ["app.py"]
@@ -19,7 +18,7 @@ def galleryRoute():
     image_files = os.listdir("static/images/gallery")
     image_data = []
     for image_file in image_files:
-        image_data.append({"src": f"http://{hosted_url}:7000/getFile?file=/home/kaptaan/IIT_Kanpur/Clubs/PClub/Secretary-Recruitment/2023-24/PClub-DVWA/static/images/gallery/{image_file}"})
+        image_data.append({"src": f"/getFile?file=/home/kaptaan/IIT_Kanpur/Clubs/PClub/Secretary-Recruitment/2023-24/PClub-DVWA/static/images/gallery/{image_file}"})
     return render_template("gallery.html", images=image_data)
 @app.route("/getFile", methods=["GET"])
 def getFileRoute():
