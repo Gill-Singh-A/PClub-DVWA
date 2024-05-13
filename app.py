@@ -9,7 +9,7 @@ port = 7000
 debug = True
 
 @app.route("/gallery", methods=["GET"])
-def index():
+def galleryRoute():
     image_files = os.listdir("static/images/gallery")
     image_data = []
     for image_file in image_files:
