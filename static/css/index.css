@@ -35,6 +35,25 @@ logo {
     margin-bottom: 20px;
     filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
 }
+h1 {
+    color: rgb(220, 220, 220);
+    text-align: center;
+    transition: 0.4s;
+}
+h1:hover {
+    color: white;
+    text-decoration: underline #37b1e2;
+}
+h3 {
+    padding-left: 15px;
+    color: rgb(200, 200, 200);
+    text-align: center;
+    transition: 0.4s;
+}
+h3:hover {
+    color: rgb(210, 210, 210);
+    text-decoration: underline #37b1e2;
+}
 header {
     position: fixed;
     top: 0%;
