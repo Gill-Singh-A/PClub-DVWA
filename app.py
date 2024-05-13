@@ -14,7 +14,7 @@ def index():
     image_data = []
     for image_file in image_files:
         image_data.append({"src": f"/static/images/gallery/{image_file}"})
-    return render_template("index.html", images=image_data)
+    return render_template("gallery.html", images=image_data)
 
 if __name__ == "__main__":
     app.run(host=host, port=port, debug=debug)
