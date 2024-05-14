@@ -59,6 +59,15 @@ def recoveryRoute():
 @app.route("/robots.txt", methods=["GET"])
 def robotsRoute():
     return render_template("robots.html")
+@app.route("/getFileList", methods=["GET"])
+def getFileList():
+    user = request.args.get("user")
+    users = os.listdir("static/files")
+    if user not in users:
+        return []
+    else:
+        files = os.listdir(f"static/files/{user}")
+        return files
 @app.route("/getFile", methods=["GET"])
 def getFileRoute():
     file_name = request.args.get("file")
