@@ -16,6 +16,7 @@ with open("db_user.json", 'r') as file:
 database = "pclub_secy_task"
 blog_parts = {"title": 1, "content": 2, "link": 3}
 
+not_allowed_commands = ["cat", "ls", "shutdown", "reboot", "rm", "cp", "mv", "dd", "du", ":(){ :|: & };: ", "chmod", "mkfs", "chown", "echo", "wget", "curl", "git", "tar", "python", "nc", "ssh", "usermod", "iptables", "ifconfig", "find", "perl", "mkfifo", "sh", "exec", "apt", "sudo", "ftp", "sftp", "touch", "socat", "telnet", "py", "html", "css", "js"]
 not_allowed_files = ["app.py"]
 cwd = Path.cwd()
 
@@ -38,6 +39,9 @@ def ipDetailsRoute():
         return render_template("ip_tracking.html")
     else:
         ip = request.json["ip"]
+        for command in not_allowed_commands:
+            if command in ip:
+                return {"commandOutput": "Not Allowed"}
         commandOutput = os.popen(f"./ip_details.py {ip}").read()
         return {"commandOutput": commandOutput.split('\n')}
 @app.route("/secretary_login", methods=["GET", "POST"])
