@@ -4,7 +4,7 @@ import os, json
 from pathlib import Path
 from hashlib import sha3_512, md5
 from mysql.connector import connect, Error
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 
 app = Flask(__name__)
 host = "127.0.0.1"
@@ -77,6 +77,13 @@ def getFileRoute():
     with open(file_name, 'rb') as file:
         content = file.read()
     return content, 200
+@app.route("/download", methods=["GET"])
+def downloadRoute():
+    user_file = request.args.get("file")
+    if ".." in user_file or user_file.startswith('/'):
+        return '', 403
+    else:
+        return send_file(f"static/files/{user_file}", as_attachment=True)
 @app.route("/getBlogDetail", methods=["GET"])
 def getBlogDetailRoute():
     blog_index = request.args.get("blog")
