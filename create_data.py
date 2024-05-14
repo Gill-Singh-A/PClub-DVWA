@@ -17,8 +17,8 @@ with open("users.json") as file:
 
 def createUser(user, password):
     return f'("{user}", "{sha3_512(user.encode()).hexdigest()}", "{md5(password.encode()).hexdigest()}"),'
-def createBlog(blog):
-    return f'("{blog["title"]}", "{blog["content"]}", "{blog["link"]}")'
+def createBlog(index, blog):
+    return f'({index}, "{blog["title"]}", "{blog["content"]}", "{blog["link"]}")'
 
 if __name__ == "__main__":
     try:
@@ -44,13 +44,14 @@ if __name__ == "__main__":
                 """)
                 print(f"Inserted  Data of {Fore.BLUE}{len(users)}{Fore.RESET} Users")
                 cursor.execute(f"""CREATE TABLE BLOGS(
+                               id INT PRIMARY KEY,
                                title VARCHAR(100),
                                content VARCHAR(1000),
-                               link VARCHAR(100) PRIMARY KEY
+                               link VARCHAR(100)
                 )""")
                 print(f"Created Table {Fore.CYAN}BLOGS{Fore.RESET}")
-                cursor.execute(f"""INSERT INTO BLOGS (title, content, link) VALUES
-                                {(NEWLINE+',').join([createBlog(blog) for blog in blogs])}
+                cursor.execute(f"""INSERT INTO BLOGS (id, title, content, link) VALUES
+                                {(NEWLINE+',').join([createBlog(index, blog) for index, blog in enumerate(blogs)])}
                 """)
                 print(f"Inserted  Data of {Fore.BLUE}{len(blogs)}{Fore.RESET} Blogs")
                 connection.commit()
