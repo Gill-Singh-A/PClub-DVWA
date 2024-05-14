@@ -3,7 +3,7 @@
 import json, random
 from hashlib import sha3_512, md5
 from mysql.connector import connect, Error
-from colorama import Fore
+from colorama import Fore, Back
 
 database = "pclub_secy_task"
 NEWLINE = '\n'
@@ -54,6 +54,14 @@ if __name__ == "__main__":
                                 {(NEWLINE+',').join([createBlog(index, blog) for index, blog in enumerate(blogs)])}
                 """)
                 print(f"Inserted  Data of {Fore.BLUE}{len(blogs)}{Fore.RESET} Blogs")
+                cursor.execute(f"""CREATE TABLE HINTS(
+                               hint VARCHAR(150)
+                )""")
+                cursor.execute(f"""INSERT INTO HINTS (hint) VALUES
+                                ("In the Users Table userhash is the hash of the username and the password is md5 hash."),
+                                ("To Give a Physical Significance of their Weakness, if they were your window glass, they could be easily broken with a rock.")
+                               """)
+                print(f"Inserted {Fore.BLUE}2{Fore.RESET} {Back.YELLOW}{Fore.RED}Hints{Fore.RESET}{Back.RESET}")
                 connection.commit()
     except Error as err:
         print(err)
