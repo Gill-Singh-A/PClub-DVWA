@@ -44,6 +44,18 @@ h1:hover {
     color: white;
     text-decoration: underline #37b1e2;
 }
+h2 {
+    color: rgb(30, 30, 30);
+    text-align: center;
+    transition: 0.4s;
+}
+h2:hover {
+    color: rgb(0, 0, 0);
+    text-decoration: underline rgb(30, 30, 30);
+}
+p {
+    color: rgb(50, 50, 50);
+}
 h3 {
     padding-left: 15px;
     color: rgb(200, 200, 200);
@@ -245,4 +257,14 @@ input {
     color: rgb(100, 100, 100);
     float: right;
     text-decoration: underline;
+}
+#result {
+    padding: 10px;
+    background-color: rgba(200, 200, 200, 0.8);
+    border-radius: 10px;
+    transition: 0.1s;
+}
+#result:hover {
+    background-color: rgba(220, 220, 220, 0.9);
+    border-radius: 20px;
 }
