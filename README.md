@@ -25,7 +25,7 @@ In your System's MySQL Server, do the following:
 This can be achieved by running the following commands on MySQL:
 ```mysql
 CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
-GRANT ALL ON user.* TO 'pclub_secy_task'@'localhost';
+GRANT ALL ON pclub_secy_task.* TO 'user'@'localhost';
 ```
 Then create a file in the Directory of PClub-DVWA called ***db_user.json*** and it should contain the following json data:
 ```json
