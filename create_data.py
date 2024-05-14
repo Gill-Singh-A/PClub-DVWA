@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 
-import json, random
+import json
 from hashlib import sha3_512, md5
 from mysql.connector import connect, Error
 from colorama import Fore, Back
