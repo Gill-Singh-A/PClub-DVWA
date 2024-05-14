@@ -61,7 +61,7 @@ In BLOGS Table, there are 4 columns:
 In HINTS Table, there is only 1 column:
 * hint
 ## Procedure
-* After opening Gallery, we see that sources of the Images is something like */getFile?file=/home/kaptaan/IIT_Kanpur/Clubs/PClub/Secretary-Recruitment/2023-24/PClub-DVWA/static/images/gallery/{image_index}.jpeg*. This lets us know that it is vulnerable to Path Traversal Vulnerability. So we send a **GET** request */getFile?file=/home/kaptaan/IIT_Kanpur/Clubs/PClub/Secretary-Recruitment/2023-24/PClub-DVWA/routes.txt* and we get the First flag and a hing.
+* After opening Gallery, we see that sources of the Images is something like */getFile?file=/home/kaptaan/IIT_Kanpur/Clubs/PClub/Secretary-Recruitment/2023-24/PClub-DVWA/static/images/gallery/{image_index}.jpeg*. This lets us know that it is vulnerable to Path Traversal Vulnerability. So we send a **GET** request */getFile?file=/home/kaptaan/IIT_Kanpur/Clubs/PClub/Secretary-Recruitment/2023-24/PClub-DVWA/routes.txt* and we get the First flag and a hint.
 * After opening Blogs, we see that the Title, Content and Link of the Blogs are fetched through */getBlogDetails* endpoint. After running ***sqlmap*** on it, we found that **blog** parameter is vulnerable to ***SQL INJECTION*** vulnerability. After that we dump the Database, we found from the HINTS table that the passwords are weak and uses MD5 Hashing Algorithm, after running rockyou, we find every password.
 * On logging in with *kaptaan* user, we find that there is a flag.
 * On logging in with *amansg22* user, we find that there is logo of ***Aerial Robotics***. After using ***steghide*** on it, we found a QR Code, after scanning the QR Code we get a **base64 encoded string** and decoding it and doing **ROT13** on it, we get the flag.
