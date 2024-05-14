@@ -17,7 +17,7 @@ def display_ip_location_info(data):
     print('\n')
 
 def get_ip_location(ip):
-    api_key = "4095b53c881d41babf011f45572dd0b8"
+    api_key = "YOUR_API_KEY"
     url = f"https://api.ipgeolocation.io/ipgeo?apiKey={api_key}&ip="
     location_data = []
     data = loads(get(f"{url}{ip}").text)
