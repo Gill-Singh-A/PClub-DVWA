@@ -2,8 +2,9 @@
 
 import os, json
 from pathlib import Path
-from flask import Flask, render_template, request
+from hashlib import sha3_512
 from mysql.connector import connect, Error
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 host = "127.0.0.1"
@@ -31,6 +32,8 @@ def galleryRoute():
 @app.route("/blogs", methods=["GET"])
 def blogsRoute():
     return render_template("blogs.html")
+def robotsRoute():
+    return render_template("robots.html")
 @app.route("/getFile", methods=["GET"])
 def getFileRoute():
     file_name = request.args.get("file")
