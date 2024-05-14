@@ -2,7 +2,7 @@
 
 import os, json
 from pathlib import Path
-from hashlib import sha3_512
+from hashlib import sha3_512, md5
 from mysql.connector import connect, Error
 from flask import Flask, render_template, request
 
@@ -32,6 +32,28 @@ def galleryRoute():
 @app.route("/blogs", methods=["GET"])
 def blogsRoute():
     return render_template("blogs.html")
+@app.route("/secretary_login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        user = request.form["user"]
+        password = md5(request.form["password"].encode()).hexdigest()
+        connection = connect(host="localhost", user=login_details["user"], password=login_details["password"])
+        cursor = connection.cursor()
+        cursor.execute(f"USE {database}")
+        cursor.execute(f"SELECT password FROM USERS WHERE userhash='{sha3_512(user.encode()).hexdigest()}'")
+        original_password = cursor.fetchall()
+        cursor.close()
+        connection.close()
+        if len(original_password) == 1:
+            original_password = original_password[0][0]
+            if original_password == password:
+                return render_template("login.html", message="User have not File or Data to Show!")
+            else:
+                return render_template("login.html", message="Incorrect Password")
+        else:
+            return render_template("login.html", message="User Not Found")
+    return render_template("login.html")
+@app.route("/robots.txt", methods=["GET"])
 def robotsRoute():
     return render_template("robots.html")
 @app.route("/getFile", methods=["GET"])
