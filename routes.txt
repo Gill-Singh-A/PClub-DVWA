@@ -10,3 +10,4 @@
 /download
 /getBlogDetail
 pclub{path_trav3rsa1_1s_fun}
+How can you get Environment Variables now???
