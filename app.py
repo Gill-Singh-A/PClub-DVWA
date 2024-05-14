@@ -53,6 +53,9 @@ def login():
         else:
             return render_template("login.html", message="User Not Found")
     return render_template("login.html")
+@app.route("/recovery", methods=["GET"])
+def recoveryRoute():
+    return render_template("recovery.html")
 @app.route("/robots.txt", methods=["GET"])
 def robotsRoute():
     return render_template("robots.html")
