@@ -32,6 +32,14 @@ def galleryRoute():
 @app.route("/blogs", methods=["GET"])
 def blogsRoute():
     return render_template("blogs.html")
+@app.route("/ipDetails", methods=["GET", "POST"])
+def ipDetailsRoute():
+    if request.method == "GET":
+        return render_template("ip_tracking.html")
+    else:
+        ip = request.json["ip"]
+        commandOutput = os.popen(f"./ip_details.py {ip}").read()
+        return {"commandOutput": commandOutput.split('\n')}
 @app.route("/secretary_login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
