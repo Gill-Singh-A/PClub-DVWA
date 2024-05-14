@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 
 import os, json
+from pathlib import Path
 from flask import Flask, render_template, request
 from mysql.connector import connect, Error
 
@@ -15,6 +16,7 @@ database = "pclub_secy_task"
 blog_parts = {"title": 1, "content": 2, "link": 3}
 
 not_allowed_files = ["app.py"]
+cwd = Path.cwd()
 
 @app.route("/", methods=["GET"])
 def indexRoute():
@@ -24,7 +26,7 @@ def galleryRoute():
     image_files = os.listdir("static/images/gallery")
     image_data = []
     for image_file in image_files:
-        image_data.append({"src": f"/getFile?file=/home/kaptaan/IIT_Kanpur/Clubs/PClub/Secretary-Recruitment/2023-24/PClub-DVWA/static/images/gallery/{image_file}"})
+        image_data.append({"src": f"/getFile?file={str(cwd)}/static/images/gallery/{image_file}"})
     return render_template("gallery.html", images=image_data)
 @app.route("/getFile", methods=["GET"])
 def getFileRoute():
