@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>IP Details</title>
+        <link rel="icon" href="{{url_for('static', filename='images/logo.ico')}}">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/index.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/login.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/search.css')}}">
+    </head>
+    <body>
+        <header>
+            <a href="/"><div class="header_element_left">Home</div></a>
+            <a href="/gallery"><div class="header_element_left">Gallery</div></a>
+            <a href="/blogs"><div class="header_element_left">Blogs</div></a>
+            <a href="https://pclub.in/"><img src="{{url_for('static', filename='images/pclub.png')}}" id="header_logo"><div class="header_element_right">Website</div></a>
+        </header>
+        <div class="form_frame">
+            <form id="searchIPForm">
+                <img src="{{url_for('static', filename='images/pclub.png')}}">
+                <div class="input-container">
+                    <i class="fa fa-user"></i>
+                    <input class="login_form_input" id="ip" name="ip" type="text" placeholder="IP Address" required>
+                </div>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <div id="result"></div>
+        <footer>
+            <div class="footer-text-left">
+                Programming Club
+            </div>
+            <div class="footer-content-right">
+                <a href="https://www.linkedin.com/in/pclubiitk"><img src="{{url_for('static', filename='images/linkedin.webp')}}" class="icon-style" alt="LinkedIN"></a>
+                <a href="https://github.com/pclubiitk"><img src="{{url_for('static', filename='images/github.png')}}" class="icon-style" alt="Github"></a>
+                <a href="https://www.instagram.com/pclubiitk"><img src="{{url_for('static', filename='images/instagram.png')}}" class="icon-style" alt="Instagram"></a>
+                <a href="https://twitter.com/pclubiitk"><img src="{{url_for('static', filename='images/twitter.svg')}}" class="icon-style" alt="Twitter"></a>
+            </div>
+        </footer>
+        <script src="{{url_for('static', filename='js/ip_tracking.js')}}"></script>
+    </body>
+</html>
