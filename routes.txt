@@ -1,0 +1,12 @@
+/
+/gallery
+/blogs
+/ipDetails
+/secretary_login
+/recovery
+/robots.txt
+/getFileList
+/getFile
+/download
+/getBlogDetail
+pclub{path_trav3rsa1_1s_fun}
