@@ -47,7 +47,7 @@ def login():
         if len(original_password) == 1:
             original_password = original_password[0][0]
             if original_password == password:
-                return render_template("login.html", message="User have not File or Data to Show!")
+                return render_template("file.html", user=user)
             else:
                 return render_template("login.html", message="Incorrect Password")
         else:
