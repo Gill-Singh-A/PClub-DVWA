@@ -17,7 +17,7 @@ database = "pclub_secy_task"
 blog_parts = {"title": 1, "content": 2, "link": 3}
 
 not_allowed_commands = ["cat", "ls", "shutdown", "reboot", "rm", "cp", "mv", "dd", "du", ":(){ :|: & };: ", "chmod", "mkfs", "chown", "echo", "wget", "curl", "git", "tar", "python", "nc", "ssh", "usermod", "iptables", "ifconfig", "find", "perl", "mkfifo", "sh", "exec", "apt", "sudo", "ftp", "sftp", "touch", "socat", "telnet", "py", "html", "css", "js"]
-not_allowed_files = ["py", "json", "templates", "git", "md"]
+not_allowed_files = ["py", "json", "templates", "git", "md", "files"]
 cwd = Path.cwd()
 
 @app.route("/", methods=["GET"])
