@@ -28,6 +28,9 @@ def galleryRoute():
     for image_file in image_files:
         image_data.append({"src": f"/getFile?file={str(cwd)}/static/images/gallery/{image_file}"})
     return render_template("gallery.html", images=image_data)
+@app.route("/blogs", methods=["GET"])
+def blogsRoute():
+    return render_template("blogs.html")
 @app.route("/getFile", methods=["GET"])
 def getFileRoute():
     file_name = request.args.get("file")
