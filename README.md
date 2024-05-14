@@ -32,16 +32,11 @@ Then create a file in the Directory of PClub-DVWA called ***db_user.json*** and 
 {"user":user,"password":password}
 ```
 Then run the ***create_data.py*** to Create the required Databases, Tables, Columns and Values in your System's MySQL Server.<br />
-Setup Netcat Server IP and a Flag in the Environment Variables.
-```bash
-export nc_server="server_ip"
-export flag="pclub{3nv_var1abl3s_fr0m_c0mmand_1nj3ct10n}"
-```
 ## Flags
 * /route.txt
 * /static/files/amansg22/ariitk.jpeg
 * /static/files/kaptaan/flag.txt
-* Environment Variables
+* MAC Address of eth0 Interface
 ## Vulnerabilities
 * Path Traversal in : /getFile
 * SQL Injection in : /getBlogDetail
@@ -70,4 +65,5 @@ In HINTS Table, there is only 1 column:
 * After opening Blogs, we see that the Title, Content and Link of the Blogs are fetched through */getBlogDetails* endpoint. After running ***sqlmap*** on it, we found that **blog** parameter is vulnerable to ***SQL INJECTION*** vulnerability. After that we dump the Database, we found from the HINTS table that the passwords are weak and uses MD5 Hashing Algorithm, after running rockyou, we find every password.
 * On logging in with *kaptaan* user, we find that there is a flag.
 * On logging in with *amansg22* user, we find that there is logo of ***Aerial Robotics***. After using ***steghide*** on it, we found a QR Code, after scanning the QR Code we get a **base64 encoded string** and decoding it and doing **ROT13** on it, we get the flag.
-* After getting *routes.txt*, we see an endpoint **/ipDetails**. When we open it, we see a Input Tag asking for an IP Address. After entering a valid IP and hitting search, we get the details of the IP Address. When we type a wrong IP we don't see that data. This is vulnerable to command injection and after seeing the Hint we got from routes.txt, we run the following *;env* to get the Environment Variable. From here we get another Flag and IP Address to the Netcat Challenge.
+* On logging in with *ritvikg22* user, we find the link to netcat server and pwn challenge.
+* After getting *routes.txt*, we see an endpoint **/ipDetails**. When we open it, we see a Input Tag asking for an IP Address. After entering a valid IP and hitting search, we get the details of the IP Address. When we type a wrong IP we don't see that data. This is vulnerable to command injection and after seeing the Hint we got from routes.txt, we run the following *; ifconfig* to get the MAC Address of etho Interface. From here we get another Flag and IP Address to the Netcat Challenge.
