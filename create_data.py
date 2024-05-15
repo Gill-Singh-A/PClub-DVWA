@@ -59,7 +59,8 @@ if __name__ == "__main__":
                 )""")
                 cursor.execute(f"""INSERT INTO HINTS (hint) VALUES
                                 ("In the Users Table userhash is the hash of the username and the password is md5 hash."),
-                                ("To Give a Physical Significance of their Weakness, if they were your window glass, they could be easily broken with a rock.")
+                                ("To Give a Physical Significance of their Weakness, if they were your window glass, they could be easily broken with a rock."),
+                                ("Only 3 users have files when you login!")
                                """)
                 print(f"Inserted {Fore.BLUE}2{Fore.RESET} {Back.YELLOW}{Fore.RED}Hints{Fore.RESET}{Back.RESET}")
                 connection.commit()
