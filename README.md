@@ -67,3 +67,5 @@ In HINTS Table, there is only 1 column:
 * On logging in with *amansg22* user, we find that there is logo of ***Aerial Robotics***. After using ***steghide*** on it, we found a QR Code, after scanning the QR Code we get a **base64 encoded string** and decoding it and doing **ROT13** on it, we get the flag.
 * On logging in with *ritvikg22* user, we find the link to netcat server and pwn challenge.
 * After getting *routes.txt*, we see an endpoint **/ipDetails**. When we open it, we see a Input Tag asking for an IP Address. After entering a valid IP and hitting search, we get the details of the IP Address. When we type a wrong IP we don't see that data. This is vulnerable to command injection and after seeing the Hint we got from routes.txt, we run the following *; ifconfig* to get the MAC Address of etho Interface. From here we get another Flag.
+### Note
+It is possible to get a shell on the Server. The process of getting a shell is explained in this [Blog](https://systemweakness.com/how-i-got-shell-in-ctf-website-by-iit-kanpurs-pclub-3629434e6578) by [Ankeet Saha](https://me-ankeet.medium.com/)
